@@ -6,8 +6,6 @@ def listar_tarefa(request):
     tarefas = Tarefa.objects.all().values()
     return JsonResponse(list(tarefas) , safe=False)
 
-from django.http import JsonResponse
-from .models import Tarefa
 
 def tarefas_por_status_prioridade(request, status, prioridade):
     tarefas = Tarefa.objects.filter(status=status)
@@ -18,6 +16,7 @@ def tarefas_por_status_prioridade(request, status, prioridade):
     data = list(tarefas.values())
     return JsonResponse(data, safe=False)
 
+
 def tarefa_por_id(request, id):
     tarefa = Tarefa.objects.filter(id=id).values().first()
 
@@ -25,12 +24,14 @@ def tarefa_por_id(request, id):
         return JsonResponse(tarefa)
     return JsonResponse({'erro': 'Tarefa nao encontrada'})
     
+
 def atrasada(request):
 
     hoje = timezone.now().date()
 
     tarefa_atrasada = Tarefa.objects.filter(data_entrega__lt = hoje, status = 'ABERTA').values()
     return JsonResponse(list(tarefa_atrasada), safe=False)
+
 
 def buscar_titulo(request, titulo):
     tarefa_titulo = Tarefa.objects.filter(titulo__iexact = titulo).values()
