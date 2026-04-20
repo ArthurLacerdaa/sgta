@@ -8,4 +8,3 @@ urlpatterns = [
     path('tarefas/busca/<str:titulo>/', buscar_titulo),
     path('tarefas/atrasadas/', atrasada)
 ]
-
