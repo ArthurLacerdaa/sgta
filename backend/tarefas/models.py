@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 # models.py define a estrutura das tabelas do banco de dados para o app 'tarefas'.
 # Cada classe que herda de models.Model vira uma tabela no banco.
 
 from django.db import models       # Importa a base para criação de modelos Django
 from usuarios.models import Usuario  # Importa o modelo Usuario para criar o relacionamento
+=======
+from django.db import models
+from usuarios.models import Usuario
+
+
+>>>>>>> 6963cd2023785647491a85d84e7e9d5d6e64e2f1
 
 
 class Tarefa(models.Model):
@@ -11,9 +18,21 @@ class Tarefa(models.Model):
     STATUS_CHOICES = [
         ('ABERTA', 'Aberta'),
         ('EM_ANDAMENTO', 'Em andamento'),
+<<<<<<< HEAD
         ('CONCLUIDA', 'Concluída'),
         ('CANCELADA', 'Cancelada'),
     ]
+=======
+        ('CONCLUIDA' , 'Concluida'),
+        ('CANCELADA' , 'Cancelada')
+    }
+
+    PRIORIDADE_CHOICES ={
+        ('URGENTE' , 'Urgente'),
+        ('NAO_URGENTE' , 'Não urgente')
+    }
+    
+>>>>>>> 6963cd2023785647491a85d84e7e9d5d6e64e2f1
 
     # Lista de valores válidos para o campo 'prioridade'.
     PRIORIDADE_CHOICES = [
@@ -23,6 +42,7 @@ class Tarefa(models.Model):
 
     # Título da tarefa — texto curto, limitado a 255 caracteres.
     titulo = models.CharField(max_length=255)
+<<<<<<< HEAD
 
     # Descrição detalhada da tarefa — texto livre, sem limite de tamanho.
     descricao = models.TextField()
@@ -59,3 +79,15 @@ class Tarefa(models.Model):
     # Retorna o título da tarefa quando o objeto é convertido para string.
     def __str__(self):
         return self.titulo
+=======
+    descricao = models.TextField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICE, default='ABERTA')
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    data_entrega = models.DateField()
+    prioridade = models.CharField(max_length=40 , choices=PRIORIDADE_CHOICES, default='NAO_URGENTE')
+    usuario_responsavel = models.ForeignKey(Usuario, null=True, on_delete=models.SET_NULL)
+    
+    def __str__(self):
+        return self.titulo
+
+>>>>>>> 6963cd2023785647491a85d84e7e9d5d6e64e2f1

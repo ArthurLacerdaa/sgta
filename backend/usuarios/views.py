@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # views.py define as funções que respondem às requisições HTTP do app 'usuarios'.
 # Cada função recebe um objeto 'request' (a requisição) e retorna um JsonResponse
 # (a resposta em formato JSON enviada ao cliente).
@@ -44,3 +45,22 @@ def buscar_usuario_por_id(request, id):
         # Quando o ID não existe no banco, retornamos HTTP 404 (Not Found)
         # com uma mensagem de erro explicativa no corpo da resposta.
         return JsonResponse({'erro': 'Usuário não encontrado.'}, status=404)
+=======
+from django.http import JsonResponse
+from .models import Usuario
+from django.shortcuts import get_object_or_404
+
+
+def listar_usuario(request):
+    usuarios = Usuario.objects.all().values()
+    return JsonResponse(list(usuarios) , safe=False)
+
+
+def buscar_usuario_por_id(request, id):
+    usuario = get_object_or_404(Usuario, id=id)
+
+    return JsonResponse({
+        'id': usuario.id,
+        'nome': usuario.nome,
+    })
+>>>>>>> 6963cd2023785647491a85d84e7e9d5d6e64e2f1

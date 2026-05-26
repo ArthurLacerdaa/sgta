@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # models.py define a estrutura da tabela de usuários no banco de dados.
 # A classe Usuario herda de models.Model, o que faz o Django criar e gerenciar
 # a tabela correspondente automaticamente via migrations.
@@ -26,5 +27,16 @@ class Usuario(models.Model):
 
     # Representação textual do objeto, exibida no admin do Django e no shell.
     # Retorna o nome do usuário quando o objeto é convertido para string.
+=======
+from django.db import models
+
+class Usuario(models.Model):
+    
+    nome = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    ativo = models.BooleanField(default=True)
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    
+>>>>>>> 6963cd2023785647491a85d84e7e9d5d6e64e2f1
     def __str__(self):
         return self.nome

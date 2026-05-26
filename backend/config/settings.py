@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Os seis primeiros são apps internos do Django (admin, autenticação, etc.).
 # Os dois últimos são os apps que criamos neste projeto.
 INSTALLED_APPS = [
+<<<<<<< HEAD
     'django.contrib.admin',        # painel de administração em /admin
     'django.contrib.auth',         # sistema de autenticação e permissões
     'django.contrib.contenttypes', # framework para tipos de conteúdo genéricos
@@ -41,6 +42,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',  # serve arquivos estáticos (CSS, JS, imagens)
     'tarefas',                     # nosso app de tarefas acadêmicas
     'usuarios',                    # nosso app de usuários
+=======
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'tarefas',
+    'usuarios',
+>>>>>>> 6963cd2023785647491a85d84e7e9d5d6e64e2f1
 ]
 
 
